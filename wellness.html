@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wellness – Jarvis</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="app">
+    <div class="glass-card">
+
+      <!-- Header -->
+      <header class="app-header">
+        <h1>Wellness</h1>
+        <p>Your personal wellness companion 🌿</p>
+      </header>
+
+      <!-- AI Visual (optional but premium) -->
+      <div class="ai-visual">
+        <span style="font-size:60px;">🌿</span>
+      </div>
+
+      <!-- Action -->
+      <section class="mood-section">
+        <h2>Check how you're feeling today</h2>
+
+        <button
+          class="mood okay"
+          style="width:100%; margin-bottom:16px;"
+          onclick="analyzeMood()"
+        >
+          Analyze My Mood
+        </button>
+
+        <div
+          id="suggestions"
+          style="
+            display: none;       /* HIDE initially */
+            background: rgba(255,255,255,0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 14px;
+            font-size: 0.9rem;
+            color: #34495e;
+          "
+        ></div>
+
+      </section>
+
+    </div>
+
+
+  <!-- Floating Back Button -->
+  <a href="Jarvis.html"
+     style="
+       position: fixed;
+       bottom: 20px;
+       right: 20px;
+       padding: 12px 16px;
+       border-radius: 50px;
+       background: rgba(255,255,255,0.4);
+       backdrop-filter: blur(14px);
+       text-decoration: none;
+       font-size: 0.8rem;
+       color: #34495e;
+       box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+     ">
+    ⬅ Back
+  </a>
+
+
+
+
+</body>
+<script src="js/wellness.js"></script>
+</html>

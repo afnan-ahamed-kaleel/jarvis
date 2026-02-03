@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jarvis – Mental Health Assistant</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Jarvis 🧠</h1>
+<p>How are you feeling today?</p>
+
+<div class="moods">
+  <button onclick="saveMood('Happy')">😊 Happy</button>
+  <button onclick="saveMood('Okay')">😐 Okay</button>
+  <button onclick="saveMood('Sad')">😞 Sad</button>
+  <button onclick="saveMood('Stressed')">😡 Stressed</button>
+</div>
+
+<p id="result"></p>
+
+<nav>
+  <a href="chatbot.html">Chatbot</a>
+  <a href="wellness.html">Wellness</a>
+  <a href="resources.html">Resources</a>
+  <a href="emergency.html">Emergency</a>
+</nav>
+
+<script src="js/Mood.js"></script>
+</body>
+</html>
