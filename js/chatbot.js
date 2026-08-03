@@ -1,103 +1,161 @@
-// ========================
-// Jarvis AI Responses
-// ========================
-const responses = [
-  // ===== Mood / Emotions =====
-  { keywords: ["sad", "unhappy", "depressed", "down"], reply: "I'm sorry you're feeling sad. Remember, every storm passes 🌦️. You're not alone." },
-  { keywords: ["stress", "anxious", "tension", "overwhelmed"], reply: "Stress can be heavy. Try a slow breathing exercise for 1 minute 🌬️." },
-  { keywords: ["happy", "good", "excited", "joy"], reply: "That's wonderful! Keep enjoying the moment 😊" },
-  { keywords: ["angry", "frustrated", "upset"], reply: "I understand. Sometimes stepping back for 5 minutes can help cool down 🔥." },
-  { keywords: ["lonely", "alone", "isolated"], reply: "You're not alone. Even small connections matter — reach out to someone you trust 🌟." },
-  { keywords: ["tired", "sleepy", "exhausted"], reply: "Rest is important. Try a short nap or calm meditation 💤." },
-  { keywords: ["anxiety", "panic", "worried"], reply: "Try grounding yourself: feel your feet, breathe slowly, focus on the present moment 🌿." },
+// Jarvis AI Terminal - Local Gateway Relay Implementation with Audio Synthesis Matrix & DB Persistence
 
-  // ===== Greetings =====
-  { keywords: ["hello", "hi", "hey", "hola"], reply: "Hello! I'm Jarvis, your mental wellness companion. How are you feeling today?" },
-  { keywords: ["good morning", "morning"], reply: "Good morning! ☀️ Remember, today is a fresh start." },
-  { keywords: ["good night", "night"], reply: "Good night! 🌙 Sleep well and recharge your mind." },
-  
-  // ===== Support / Advice =====
-  { keywords: ["help", "support", "advice"], reply: "I am here for you. Take a deep breath and tell me what's on your mind 💙." },
-  { keywords: ["problem", "issue", "challenge"], reply: "Take one step at a time. Focus on what you can control, not what you can't ✨." },
-  { keywords: ["motivation", "energy", "focus"], reply: "Keep going! Small steps lead to big changes. 💪" },
-  { keywords: ["life", "future", "goal"], reply: "Focus on small achievable goals. Progress is progress, no matter how tiny 🚀." },
-
-  // ===== Wellness / Meditation =====
-  { keywords: ["meditation", "relax", "calm"], reply: "Meditation can reset your mind. Focus on your breath for a few minutes 🧘." },
-  { keywords: ["breathing", "breathe", "deep breath"], reply: "Try 4 seconds inhale, 4 hold, 4 seconds exhale. Repeat 5 times 🌿." },
-  { keywords: ["exercise", "workout", "gym", "run"], reply: "Physical activity boosts your mood. Even 10 minutes of movement helps 🏃‍♂️." },
-  { keywords: ["sleep", "insomnia", "awake"], reply: "Avoid screens 30 minutes before bed. Try deep breathing or soft music 🌙." },
-  { keywords: ["music", "song", "listen"], reply: "Listening to calming music can lift your spirits 🎶." },
-  { keywords: ["nature", "walk", "outside"], reply: "A short walk outside can refresh your mind and boost mood 🌳." },
-
-  // ===== Gratitude / Positive Mindset =====
-  { keywords: ["grateful", "gratitude", "thankful"], reply: "Try writing down 1 thing you're grateful for today 📝. Small gratitude sparks big joy." },
-  { keywords: ["positivity", "positive", "happy thoughts"], reply: "Focus on what went right today. Positive thoughts can transform your day 🌞." },
-  { keywords: ["self love", "love yourself"], reply: "Treat yourself kindly. You deserve care and respect 💖." },
-
-  // ===== Fun / Casual Chat =====
-  { keywords: ["joke", "funny", "laugh"], reply: "Why don't scientists trust atoms? Because they make up everything 😄" },
-  { keywords: ["game", "play"], reply: "I can suggest mindfulness games: like counting breaths or a short gratitude challenge 🎮." },
-  { keywords: ["friend", "buddy"], reply: "Friends are important! If you want, you can chat with me anytime 💬." },
-  { keywords: ["love", "affection"], reply: "Love and care are vital for mental wellness. Spread some today 💖." },
-
-  // ===== Misc / Daily Tips =====
-  { keywords: ["food", "diet", "healthy"], reply: "Balanced nutrition helps mental wellness. Include fruits, vegetables, and stay hydrated 🥗💧." },
-  { keywords: ["water", "drink"], reply: "Don't forget to drink water regularly 💦. Hydration keeps both body and mind healthy." },
-  { keywords: ["coffee", "tea"], reply: "Moderation is key. Too much caffeine can increase anxiety ☕." },
-  { keywords: ["weather", "sunny", "rain"], reply: "I can't see the weather, but a walk outside always helps lift your mood ☀️🌧️." },
-  { keywords: ["exercise reminder", "move"], reply: "Take a short break and stretch your body. Movement clears the mind 🏃‍♂️." },
-
-  // ===== Greetings / Farewells =====
-  { keywords: ["bye", "goodbye", "see you"], reply: "Take care! Remember, I'm always here when you need me 👋" },
-  { keywords: ["thanks", "thank you", "thx"], reply: "You're welcome! 😊 I'm always here to help." },
-  { keywords: ["yes", "yeah", "yep"], reply: "Got it! 👍" },
-  { keywords: ["no", "nah", "nope"], reply: "Alright, I understand ❗" },
-
-  // ===== Default / Catch-all =====
-  { keywords: ["default"], reply: "I hear you. Can you tell me more about how you're feeling? 💭" }
-];
-
-// ========================
-// Send Message Function with Typing Animation + Emoji Glow
-// ========================
-function sendMessage() {
-  const inputBox = document.getElementById("userInput");
-  const input = inputBox.value.trim().toLowerCase();
-  const chatBox = document.getElementById("chatBox");
-
-  if (!input) return;
-
-  // Display user's message
-  chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
-  chatBox.scrollTop = chatBox.scrollHeight;
-  inputBox.value = "";
-
-  // Typing animation
-  const typingMsg = document.createElement("p");
-  typingMsg.innerHTML = `<b>Jarvis:</b> <span class="typing">...</span>`;
-  chatBox.appendChild(typingMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  setTimeout(() => {
-    // Determine reply
-    let reply = "I'm here for you ❤️";
-    for (let obj of responses) {
-      for (let kw of obj.keywords) {
-        if (input.includes(kw)) {
-          reply = obj.reply;
-          break;
+/**
+ * Programmatically synthesizes premium notification sounds using the Web Audio API.
+ * Eliminates dependencies on external static audio files and prevents loading lag.
+ * @param {String} type - The sound motif configuration ('send' or 'receive')
+ */
+function playSfx(type) {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        
+        const ctx = new AudioContext();
+        
+        if (type === 'send') {
+            // Crisp, subtle structural "pop/woosh" frequency slide up
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(580, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
+            
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+            
+        } else if (type === 'receive') {
+            // Calm, elegant dual-tone therapeutic musical chime (E5 -> G5 harmony)
+            const now = ctx.currentTime;
+            
+            // First chime tone
+            const osc1 = ctx.createOscillator();
+            const gain1 = ctx.createGain();
+            osc1.type = 'triangle';
+            osc1.frequency.setValueAtTime(659.25, now); // E5 note
+            gain1.gain.setValueAtTime(0.12, now);
+            gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+            osc1.connect(gain1);
+            gain1.connect(ctx.destination);
+            
+            // Harmonizing tone delayed slightly
+            const osc2 = ctx.createOscillator();
+            const gain2 = ctx.createGain();
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(783.99, now + 0.06); // G5 note
+            gain2.gain.setValueAtTime(0.10, now + 0.06);
+            gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+            osc2.connect(gain2);
+            gain2.connect(ctx.destination);
+            
+            osc1.start(now);
+            osc1.stop(now + 0.25);
+            osc2.start(now + 0.06);
+            osc2.stop(now + 0.3);
         }
-      }
-      if (reply !== "I'm here for you ❤️") break;
+    } catch (e) {
+        console.warn("Web Audio context initialization blocked by browser autoplay constraints:", e);
     }
-    if (reply === "I'm here for you ❤️") {
-      reply = responses.find(obj => obj.keywords[0] === "default").reply;
-    }
+}
 
-    // Replace typing with actual reply with emoji glow
-    typingMsg.innerHTML = `<b>Jarvis:</b> <span class="emoji-glow">${reply}</span>`;
+async function sendMessage() {
+    const inputBox = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+    const sessionInput = document.getElementById("activeSessionId");
+    const userText = inputBox.value.trim();
+    
+    if (!userText) return;
+
+    const currentSessionId = sessionInput ? sessionInput.value : '';
+
+    // 1. Render User Message Bubbles using standardized curvier system wrappers
+    chatBox.innerHTML += `
+        <div class="chat-bubble-row user-row">
+            <span class="msg-bubble user">
+                ${userText}
+            </span>
+        </div>`;
+
+    // Fire the programmatic send sound effect matrix
+    playSfx('send');
+
+    inputBox.value = ""; 
     chatBox.scrollTop = chatBox.scrollHeight;
 
-  }, 800 + Math.random() * 500); // Typing delay (0.8–1.3s)
+    // 2. Instantiate Asynchronous Typing Indicator Placeholder matching the curvy profile
+    const typingId = "typing-" + Date.now();
+    chatBox.innerHTML += `
+        <div class="chat-bubble-row bot-row" id="${typingId}">
+            <span class="msg-bubble bot">
+                <b>Jarvis:</b> <i style="color:#747d8c; font-weight: normal;">Typing...</i>
+            </span>
+        </div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        // 3. Dispatch payload context safely toward internal PHP Gateway with session id
+        const response = await fetch("gemini_gateway.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userText, session_id: currentSessionId })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Server returned HTTP status ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Check and sync session_id if returned
+        if (data.session_id && sessionInput && (!sessionInput.value || sessionInput.value == '' || sessionInput.value == '0')) {
+            sessionInput.value = data.session_id;
+            // Silently update browser URL so refreshing retains this specific session thread
+            window.history.replaceState({}, '', `chatbot.php?session_id=${data.session_id}`);
+            
+            // Unhide history drawer if available
+            const drawer = document.getElementById('historyDrawer');
+            if (drawer) drawer.classList.remove('hidden');
+        }
+
+        // 4. Parse returning structures cleanly
+        if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts[0].text) {
+            const aiReply = data.candidates[0].content.parts[0].text;
+
+            // Render final system response text matching curvy styles
+            document.getElementById(typingId).innerHTML = `
+                <span class="msg-bubble bot">
+                    <b>Jarvis:</b> <span>${aiReply}</span>
+                </span>`;
+                
+            // Fire response chime audio sequence
+            playSfx('receive');
+            
+        } else if (data.error) {
+            throw new Error(data.error.message || data.error);
+        } else {
+            throw new Error("Invalid object signature returned from endpoint");
+        }
+    } catch (error) {
+        console.error("Connection Error Trace:", error);
+        
+        // Graceful error notification block using curvy structural components
+        document.getElementById(typingId).innerHTML = `
+            <span class="msg-bubble bot" style="color:#d63031; background:rgba(214,48,49,0.06); border: 1px solid rgba(214,48,49,0.2);">
+                <b>Jarvis:</b> I had trouble processing that request. Please try again in a few moments.
+            </span>`;
+    }
+    
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// 5. Capture inputs on Enter key press
+document.getElementById("userInput").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        sendMessage();
+    }
+});

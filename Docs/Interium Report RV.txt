@@ -1,0 +1,227 @@
+introduction
+This report is a presentation of the progress report towards the final-year project titled "Jarvis: AI Mental Health Assistant." The purpose of the final-year project is to create an application aimed at the digital mental wellness support of any given application. Further, the application is geared towards the emotional awareness of the users.
+
+The system has been developed based on the project proposal approved by the instructor and follows an incremental software development approach. In this interim stage, roughly 50% of the overall system development has been completed, with particular emphasis on user interface design, core functional modules, and PWA implementation.
+
+The structure of this interim report is as follows. Section 2 provides the background and related literature within the context of AI-assisted and digital mental health systems. Section 3: Description of the work completed to date Section 4: Remaining tasks required to complete the project Section 5: Progress review in respect of the original project plan Sections 6 & 7: References and bibliography consulted in the development of the project
+
+
+
+ 
+
+
+2.0 Background
+However, the rise in the number of individuals suffering from various types of mental health problems in the world has led to substantial fascination with digital-based solutions. Some of the persons suffering from various forms of emotional distress face various obstacles, including stigmatization, inaccessibility of mental health care providers, and monetary barriers.
+
+Current research indicates that AI-assisted chatbot technology can have an impact in increasing emotional intelligence, helping decrease stress or anxiety-related issues with proper ethical design in mind in such digital wellness applications (Fiske et al., 2019; Abd-Alrazaq et al., 2020). Rule-based chatbot applications can offer significant interactions without any of the issues associated with advanced AI systems.
+
+Furthermore, Progressive Web Apps have also gained traction as an option for providing an application-like user experience through conventional web technologies. They provide features such as offline support, installability, cross-platform support, and speed, thus being useful in providing mental health applications that are user-friendly and highly accessible.
+
+These findings have been integrated into the project under consideration in terms of developing an architecture that encompasses PWA, rule-based conversations, and ethical considerations that are most pertinent in terms of an undergraduate final-year project.
+
+-----------------------------------------------------------------------------------------
+2.1 Problem in Brief	
+Stress, anxiety, emotional and mood instability are mental health problems on the rise especially among university and young adults. Although there is an increasing knowledge on the importance of mental well-being, not all persons would pursue professional mental health care because of the social stigmatization, the fear of being judged, inaccessibility, or unaffordability. This leads to a situation where, emotional issues go unchecked until their extreme level arises.
+
+Simultaneously, the contemporary lives rely on the digital platform heavily, which leaves the possibility of delivering mental health care via convenient and easy-to-use apps. Nevertheless, numerous currently available mental health applications are either more sophisticated or demand subscriptions and use sophisticated forms of artificial intelligence technologies that cannot be transparent or easily accessible by the needs of a simple user. It is necessary to have a simple, ethical, and easy-to-access digital solution that assists in emotional awareness and encouraging healthy mental habits without substituting professional attention.
+							   	|
++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++
+2.2 Problem Statement	
+Stress, anxiety, emotional and mood instability are mental health problems on the rise especially among university and young adults. Although there is an increasing knowledge on the importance of mental well-being, not all persons would pursue professional mental health care because of the social stigmatization, the fear of being judged, inaccessibility, or unaffordability. This leads to a situation where, emotional issues go unchecked until their extreme level arises.
+
+Simultaneously, the contemporary lives rely on the digital platform heavily, which leaves the possibility of delivering mental health care via convenient and easy-to-use apps. Nevertheless, numerous currently available mental health applications are either more sophisticated or demand subscriptions and use sophisticated forms of artificial intelligence technologies that cannot be transparent or easily accessible by the needs of a simple user. It is necessary to have a simple, ethical, and easy-to-access digital solution that assists in emotional awareness and encouraging healthy mental habits without substituting professional attention.
+++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++					
+		   	|
+2.3 Motivation	
+Inspiration for the project is derived from the mounting mental health issues being faced by students and younger generations in general. For instance, it is attributed to studies, peer expectations, and lifestyle. As a software engineering undergraduate, there is a lot of interest in being able to use gathered knowledge to make a significant impact on society in a positive way.
+
+Additionally, the project was chosen based on academic recommendation, thus offering a chance to examine its usage, particularly in applying the theory of artificial intelligence. Motivations: Much of the motivation for the project comes from the chance to gain real-world programming expertise, particularly in a field where user interface design, logic systems, and ethical programming practices can all be achieved for the betterment of the user.
+
+								   	|
+2.4 Aim and Objectives								   	|
+Aim										   	|
+This project seeks to develop an AI-driven mobile application to address emotional instability and inaccessibility of mental health support by incorporating artificial intelligence, natural language processing, and modern mobile technologies.
+
+Objectives									   	|
+The specific objectives of the project are as follows:
+
+For designing the visual design in relaxing ways and creating an interface that is easy to use.
+
+This aim is geared towards designing a simple, clean, and emotionally calming interface for users. The interface should make users feel at ease as they use this application. It should incorporate ease of use, readability, and consistency across all pages.
+
+To design a daily mood tracking system that allows users to record their feelings. This is an objectives that allows users to upload their moods every day based on given categories of emotions. They will also have access to mood records, which will enable self-consciousness of their moods. Designing a rule-based chatbot to offer supportive responses with empathetical undertones based on conversation with users. The objective of this task includes the development of a chatbot that can converse with users and react to their message by using set rules and key terms, providing emotional support, uplifting messages, and coping mechanisms without performing diagnosis.
+
+To develop an AI Wellness Companion System that analyzes the pattern of moods and provides the appropriate relaxation techniques including positive activities.
+The essential aim of this objective is to create intelligent behavior; therefore, collected information concerning a user’s mood and interactions with a chatterbot will be utilized for providing specific wellness activities.
+
+To serve as a resource center for offering information on mental health tips, relaxation techniques, and self-care.
+
+The focus will be on reliable mental health information in simple terms, supported by quality material relevant to techniques or exercises that could be used to handle stress or improve one's mental condition. This allows for the "emergency help" feature to forward the user appropriately so users in emotional crisis are referred to contacts with emergency status. This adds an added layer of ethical responsibility.
+
+To ensure the privacy of the users and the ethical use of emotional data throughout the application.
+This objective highlights the importance of securing user data by avoiding any form of unrequired data collection in a transparent manner that is ethical in nature.
+
+Description of how the system would be developed, utilizing web development methods suitable and easily understandable by Undergraduate students, in order to make it easily understandable and even more achievable from the perspective of what it means to solve an assignment or problem in its own sense.
+
+
+
+2.5 Literature Review									|
+ 
+
+
+
+
+3.0 Work completed
+The interim stage of about 50% completion of the project work has seen progressive development of the system design, interface development and initial functionalities development with great focus on the Progressive Web Application development processes.
+
+
+3.1 System Design & Architecture
+A system architecture based on modules has been developed to determine the important elements of the application. The following are the main elements of the application:
+
+ser Interface Module
+
+Mood Tracking Module
+
+Chatbot Interaction Module
+
+Wellness Suggestibility Module.
+
+Support of Resources and Emergency.
+
+The development of it is founded on the main principles of platform independence and simplicity of deployment, which is provided by the HTML, CSS, and JavaScript combination that is used in the coding process. The application is a Progressive Web Application as well, implying that it applies the concepts of the PWA, such as responsiveness, offline support, and installability.
+ 
+Much work has been done under the PWA development. Its development components that are undertaken are as follows:
+
+Web App Manifest File Making a Declaration of Web App Identity, Icons Used, etc., Location At.  
+manifest.json
+Service Worker (service-worker.js) - to enhance offline availability and improve performance.
+Mobile responsive design and desktop responsive design.
+
+Application design is user friendly in terms of usability. The latter allows the application to be installed in a mobile device and to pose as a native application which is also one of the primary goals and objectives of this project.
+___________________________________________________________________________________________
+3.2 Implementation
+This subsection details the development activities carried out so far, including:
+•	Frontend development technologies and frameworks
+•	Backend development approaches and tools
+•	Database design and management systems
+•	Libraries, frameworks, and APIs used
+•	Core system functionalities implemented
+•	Coding standards and software engineering principles followed
+Completed user interfaces and relevant code screenshots shall be included, accompanied by brief explanations.
+___________________________________________________________________________________________
+
+3.3 User Interface Development
+
+There is a uniform and soothing user-interface theme that has been formulated and introduced throughout the system. The completed elements of the user interface are:
+
+Application branding, account creation option, authentication and application branding on the login page.
+
+Home page with mood choice and emotional check-in capability.
+
+Chatbot natural language interaction interface.
+Wellness recommendation page.
+Resource center page
+Emergency support (SOS) page
+
+The interface focuses on simplicity, clarity and emotional tranquility, which are critical design principles of mental wellness applications.
+
+3.4 Mood Tracking Module
+
+They have also introduced a mood tracking option where people can enter their daily mood with the available options being happy, okay, sad, and stressed. The browser-based local storage is used to store mood data as a demonstration and testing process.
+
+This module is the basis of emotional trend analysis and the input of the logic of wellness recommendation.
+
+
+3.5 Chatbot Module
+
+The simplest rule-of-thumb chatbot system is created to allow interacting with the user. The chatbot provides user responses based on keyword matching and predefined empathetic responses. Despite the fact that it does not employ sophisticated methods of artificial intelligence, the chatbot provides conversational intelligence that fits the scope of the project and academic needs.
+
+3.6 The logic behind the initial wellness recommendation is as follows:
+
+The Wellness Companion System has been implemented in a preliminary version. The system interprets mood data stored and offers wellness recommendations in case of detected repeated negative moods or stressed moods. Some of the recommendations are breathing exercises, relaxation methods, motivational methods, and tips about the lifestyle.
+
+
+4. Further Work
+
+Attainment of the progress has left a number of key activities that cap off the project.
+
+4.1 Backend Integration
+
+The next step in work is the inclusion of a backend service like Firebase that will facilitate the secure user authentication and data storage on a persistent basis. It will enable mood logs and chatbot conversations to be linked to individual user profiles.
+
+The fourth step involves improvement of Wellness Logic.
+
+Recommendation logic of the wellness will be improved through the introduction of extra rules and conditions that will increase the ability to personalize and reflect the emotional trends over time with greater accuracy.
+
+4.3 Testing and Evaluation
+Extensive testing is yet to be done. Testing activities to be planned are:
+
+Unit testing
+Integration testing
+Usability testing
+
+Feedback will be gathered and analyzed on the system effectiveness and usability based on the feedback given by the users.
+___________________________________________________________________________________________
+3.3 Validation
+This subsection discusses the validation and testing processes applied to the system, including:
+•	Testing strategies
+•	Test plans
+•	Test cases
+•	Summary of testing outcomes
+___________________________________________________________________________________________
+
+
+4.4 Preparation of Documentation and Final Report.
+The remaining development period will involve the final project documentation (detailed system design, details of implementation, testing results, and evaluation results). The last demonstration and presentation preparation is also in progress.
+
+5. Progress Review
+
+According to the initial project schedule, the project is within the schedule, where at the interim stage, it is estimated that half of the development is done. Basic functional units and the basis of the PWA architecture have been in place.
+
+There were small delays in the original design stage that were because of scope refinement and selection of technology. These have been tackled with easing of the AI process and the usage of a rule-based system which makes sense to the requirements of the undergraduate project.
+
+A slight modification of the project plan has been made to give more time to testing and documentation. Considering the rate of development and progress made so far, it is highly believed that the project will be successfully completed according to the stipulated time.
+___________________________________________________________________________________________
+___________________________________________________________________________________________
+References
+This section lists only the sources cited
+________________________________________
+Bibliography
+Additional sources consulted during the project, such as online tutorials and videos (including YouTube resources),
+shall be included here using the Harvard referencing style.
+________________________________________
+Appendices
+Supplementary materials that support the report like additional documentation, 
+external details, 
+and project report sheets. 
+___________________________________________________________________________________________
+___________________________________________________________________________________________
+
+Presentation Structure
+Title Slide
+•	Title of the Project
+•	Student Name and Student Identification Number (displayed at the bottom of the slide)
+Outline Slide
+An overview of all work completed during the interim project phase, aligned with the contents of the interim report.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
